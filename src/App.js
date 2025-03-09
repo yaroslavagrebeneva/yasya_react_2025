@@ -2,13 +2,14 @@ import './App.css';
 import React from 'react';
 
 function App() {
-  const str1 = 'text1';
-  const str2 = 'text2'; // Исправим str2, так как обе строки не могут быть одинаковыми
+  const name = 'user';
+  const age = '30';
 
   return (
     <div>
-      <p>{str1}</p>
-      <p>{str2}</p>
+      name: {name}
+      <br />
+      age: {age}
     </div>
   );
 }
@@ -17,5 +18,3 @@ function App() {
 
 
 export default App;
-
-
