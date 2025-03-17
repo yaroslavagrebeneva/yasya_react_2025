@@ -1,23 +1,16 @@
 import React from 'react';
+import { nanoid } from 'nanoid'; 
+import uuid from 'react-uuid';   
 
 function App() {
-  
-  const users = [
-    { id: 1, name: 'user1', surn: 'surn1', age: 30 },
-    { id: 2, name: 'user2', surn: 'surn2', age: 31 },
-    { id: 3, name: 'user3', surn: 'surn3', age: 32 },
-  ];
+ 
+  const randomId = nanoid();  
+  const randomUuid = uuid();  
 
   return (
     <div>
-      <ul>
-        
-        {users.map((user) => (
-          <li key={user.id}>
-            Name: {user.name}, Surname: {user.surn}, Age: {user.age}
-          </li>
-        ))}
-      </ul>
+      <p>Случайный ID (nanoid): {randomId}</p>
+      <p>Случайный UUID (react-uuid): {randomUuid}</p>
     </div>
   );
 }
