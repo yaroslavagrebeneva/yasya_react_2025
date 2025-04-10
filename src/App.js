@@ -1,17 +1,39 @@
 import React, { useState } from 'react';
 
 function App() {
-  const [isBanned, setIsBanned] = useState(false);
+  // Задание 1: Конвертация возраста в год рождения
+  const [age, setAge] = useState('');
+  const handleAgeChange = (event) => {
+    setAge(event.target.value);
+  };
+  const birthYear = age ? new Date().getFullYear() - age : '';
 
-  const handleBan = () => setIsBanned(true);
-  const handleUnban = () => setIsBanned(false);
+  // Задание 2: Конвертация температуры Фаренгейта в Цельсий
+  const [fahrenheit, setFahrenheit] = useState('');
+  const handleFahrenheitChange = (event) => {
+    setFahrenheit(event.target.value);
+  };
+  const celsius = fahrenheit ? ((fahrenheit - 32) * 5) / 9 : '';
 
   return (
     <div>
-      <p>User is {isBanned ? 'banned' : 'not banned'}</p>
+      {/* Задание 1 */}
+      <input
+        type="number"
+        placeholder="Введите ваш возраст"
+        value={age}
+        onChange={handleAgeChange}
+      />
+      <p>Ваш год рождения: {birthYear}</p>
 
-      {!isBanned && <button onClick={handleBan}>Ban User</button>}
-      {isBanned && <button onClick={handleUnban}>Unban User</button>}
+      {/* Задание 2 */}
+      <input
+        type="number"
+        placeholder="Введите градусы Фаренгейта"
+        value={fahrenheit}
+        onChange={handleFahrenheitChange}
+      />
+      <p>Температура в Цельсиях: {celsius}</p>
     </div>
   );
 }
