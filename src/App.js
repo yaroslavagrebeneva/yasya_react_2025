@@ -1,23 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function App() {
- 
-  const users = [
-    { name: 'user1', surn: 'surn1', age: 30 },
-    { name: 'user2', surn: 'surn2', age: 31 },
-    { name: 'user3', surn: 'surn3', age: 32 },
-  ];
-
+  // Задание 1
+  const [text, setText] = useState('');
+  
+  const translitText = text.replace(/а/g, 'a').replace(/б/g, 'b').replace(/в/g, 'v') // и так далее для каждой буквы
+  
+  // Задание 2
+  const [numbers, setNumbers] = useState('');
+  const sum = numbers.split('\n').reduce((total, line) => total + (parseFloat(line) || 0), 0);
+  
   return (
     <div>
-      <ul>
-        
-        {users.map((user, index) => (
-          <li key={index}>
-            Name: {user.name}, Surname: {user.surn}, Age: {user.age}
-          </li>
-        ))}
-      </ul>
+      {/* Задание 1 */}
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Введите текст"
+      />
+      <p>Транслит: {translitText}</p>
+
+      {/* Задание 2 */}
+      <textarea
+        value={numbers}
+        onChange={(e) => setNumbers(e.target.value)}
+        placeholder="Введите числа"
+      />
+      <p>Сумма чисел: {sum}</p>
     </div>
   );
 }
