@@ -5,62 +5,46 @@ function App() {
   const [isChecked, setIsChecked] = useState(false);
   const [message, setMessage] = useState('');
 
-  const handleButtonClick = () => {
-    if (isChecked) {
-      setMessage('Привет, пользователь!');
-    } else {
-      setMessage('До свидания!');
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', { name, surname, age });
   };
-
-  // Задание 2
-  const [htmlChecked, setHtmlChecked] = useState(false);
-  const [cssChecked, setCssChecked] = useState(false);
-  const [jsChecked, setJsChecked] = useState(false);
 
   return (
     <div>
-      {/* Задание 1 */}
-      <input
-        type="checkbox"
-        checked={isChecked}
-        onChange={(e) => setIsChecked(e.target.checked)}
-      />
-      <button onClick={handleButtonClick}>Нажми меня</button>
-      <p>{message}</p>
-
-      {/* Задание 2 */}
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={htmlChecked}
-            onChange={(e) => setHtmlChecked(e.target.checked)}
-          />
-          HTML
-        </label>
-        <p>{htmlChecked ? 'Вы знаете HTML' : 'Вы не выбрали HTML'}</p>
-
-        <label>
-          <input
-            type="checkbox"
-            checked={cssChecked}
-            onChange={(e) => setCssChecked(e.target.checked)}
-          />
-          CSS
-        </label>
-        <p>{cssChecked ? 'Вы знаете CSS' : 'Вы не выбрали CSS'}</p>
-
-        <label>
-          <input
-            type="checkbox"
-            checked={jsChecked}
-            onChange={(e) => setJsChecked(e.target.checked)}
-          />
-          JS
-        </label>
-        <p>{jsChecked ? 'Вы знаете JS' : 'Вы не выбрали JS'}</p>
-      </div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>
+            Имя:
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Фамилия:
+            <input
+              type="text"
+              value={surname}
+              onChange={(e) => setSurname(e.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Возраст:
+            <input
+              type="number"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+            />
+          </label>
+        </div>
+        <button type="submit">Отправить</button>
+      </form>
     </div>
   );
 }
