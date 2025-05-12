@@ -1,33 +1,30 @@
 import React, { useState } from 'react';
 
-function App() {
-  const [checked, setChecked] = useState(false);
-  const [message, setMessage] = useState('');
+function UserInfo({ name, age, city }) {
+  return (
+    <div>
+      <h3>Информация о пользователе:</h3>
+      <p>Имя: {name}</p>
+      <p>Возраст: {age}</p>
+      <p>Город: {city}</p>
+    </div>
+  );
+}
 
-  const handleCheckboxChange = (e) => {
-    setChecked(e.target.checked);
-    setMessage(e.target.checked ? 'Чекбокс отмечен' : 'Чекбокс не отмечен');
-  };
+function App() {
+  const [userData, setUserData] = useState({
+    name: 'Иван',
+    age: 25,
+    city: 'Москва'
+  });
 
   return (
     <div>
-      <form>
-        <div>
-          <label>
-            <input
-              type="checkbox"
-              checked={checked}
-              onChange={handleCheckboxChange}
-            />
-            Отметьте меня
-          </label>
-        </div>
-      </form>
-
-      <div>
-        <h3>Статус чекбокса:</h3>
-        <p>{message}</p>
-      </div>
+      <UserInfo 
+        name={userData.name}
+        age={userData.age}
+        city={userData.city}
+      />
     </div>
   );
 }
