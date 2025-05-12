@@ -8,6 +8,18 @@ function App() {
   const [surname, setSurname] = useState('');
   const [age, setAge] = useState('');
 
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleSurnameChange = (e) => {
+    setSurname(e.target.value);
+  };
+
+  const handleAgeChange = (e) => {
+    setAge(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', { name, surname, age });
@@ -22,7 +34,7 @@ function App() {
             <input
               type="text"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={handleNameChange}
             />
           </label>
         </div>
@@ -32,7 +44,7 @@ function App() {
             <input
               type="text"
               value={surname}
-              onChange={(e) => setSurname(e.target.value)}
+              onChange={handleSurnameChange}
             />
           </label>
         </div>
@@ -42,7 +54,7 @@ function App() {
             <input
               type="number"
               value={age}
-              onChange={(e) => setAge(e.target.value)}
+              onChange={handleAgeChange}
             />
           </label>
         </div>
