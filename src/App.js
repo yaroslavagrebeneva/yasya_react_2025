@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './Counter.module.css';
 
 function Counter() {
   const [count, setCount] = useState(0);
@@ -17,16 +18,17 @@ function Counter() {
   };
 
   return (
-    <div>
+    <div className={styles.counter}>
       <h2>Счетчик: {count}</h2>
       <div>
-        <button onClick={handleDecrement}>-</button>
-        <button onClick={handleIncrement}>+</button>
+        <button className={styles.button} onClick={handleDecrement}>-</button>
+        <button className={styles.button} onClick={handleIncrement}>+</button>
       </div>
       <div>
         <label>
           Шаг:
           <input
+            className={styles.input}
             type="number"
             value={step}
             onChange={handleStepChange}
