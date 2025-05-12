@@ -4,6 +4,9 @@ function App() {
   // Задание 1
   const [isChecked, setIsChecked] = useState(false);
   const [message, setMessage] = useState('');
+  const [name, setName] = useState('');
+  const [surname, setSurname] = useState('');
+  const [age, setAge] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,6 +48,13 @@ function App() {
         </div>
         <button type="submit">Отправить</button>
       </form>
+
+      <div>
+        <h3>Введенные данные:</h3>
+        <p>Имя: {name}</p>
+        <p>Фамилия: {surname}</p>
+        <p>Возраст: {age}</p>
+      </div>
     </div>
   );
 }
