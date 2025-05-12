@@ -1,34 +1,48 @@
 import React, { useState } from 'react';
 
-function Greeting({ isLoggedIn, username }) {
-  if (isLoggedIn) {
-    return <h2>Добро пожаловать, {username}!</h2>;
-  }
-  return <h2>Пожалуйста, войдите в систему</h2>;
-}
+function Counter() {
+  const [count, setCount] = useState(0);
+  const [step, setStep] = useState(1);
 
-function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
-
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-    setUsername('Иван');
+  const handleIncrement = () => {
+    setCount(prevCount => prevCount + step);
   };
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setUsername('');
+  const handleDecrement = () => {
+    setCount(prevCount => prevCount - step);
+  };
+
+  const handleStepChange = (e) => {
+    setStep(Number(e.target.value));
   };
 
   return (
     <div>
-      <Greeting isLoggedIn={isLoggedIn} username={username} />
-      {isLoggedIn ? (
-        <button onClick={handleLogout}>Выйти</button>
-      ) : (
-        <button onClick={handleLogin}>Войти</button>
-      )}
+      <h2>Счетчик: {count}</h2>
+      <div>
+        <button onClick={handleDecrement}>-</button>
+        <button onClick={handleIncrement}>+</button>
+      </div>
+      <div>
+        <label>
+          Шаг:
+          <input
+            type="number"
+            value={step}
+            onChange={handleStepChange}
+            min="1"
+          />
+        </label>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <h1>Управление счетчиком</h1>
+      <Counter />
     </div>
   );
 }
