@@ -1,23 +1,22 @@
 import React from 'react';
 
-function Button({ children, onClick }) {
+function List({ items }) {
   return (
-    <button onClick={onClick}>
-      {children}
-    </button>
+    <ul>
+      {items.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </ul>
   );
 }
 
 function App() {
-  const handleClick = () => {
-    alert('Кнопка нажата!');
-  };
+  const items = ['Элемент 1', 'Элемент 2', 'Элемент 3', 'Элемент 4', 'Элемент 5'];
 
   return (
     <div>
-      <Button onClick={handleClick}>
-        Нажми меня
-      </Button>
+      <h2>Список элементов:</h2>
+      <List items={items} />
     </div>
   );
 }
