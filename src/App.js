@@ -1,40 +1,33 @@
 import React, { useState } from 'react';
 
 function App() {
-  // Задание 1
-  const [isChecked, setIsChecked] = useState(false);
-  const [message, setMessage] = useState('');
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [age, setAge] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    surname: '',
+    age: '',
+    email: '',
+    phone: ''
+  });
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleSurnameChange = (e) => {
-    setSurname(e.target.value);
-  };
-
-  const handleAgeChange = (e) => {
-    setAge(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', { name, surname, age });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form>
         <div>
           <label>
             Имя:
             <input
               type="text"
-              value={name}
-              onChange={handleNameChange}
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
             />
           </label>
         </div>
@@ -43,8 +36,9 @@ function App() {
             Фамилия:
             <input
               type="text"
-              value={surname}
-              onChange={handleSurnameChange}
+              name="surname"
+              value={formData.surname}
+              onChange={handleInputChange}
             />
           </label>
         </div>
@@ -53,19 +47,43 @@ function App() {
             Возраст:
             <input
               type="number"
-              value={age}
-              onChange={handleAgeChange}
+              name="age"
+              value={formData.age}
+              onChange={handleInputChange}
             />
           </label>
         </div>
-        <button type="submit">Отправить</button>
+        <div>
+          <label>
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Телефон:
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleInputChange}
+            />
+          </label>
+        </div>
       </form>
 
       <div>
         <h3>Введенные данные:</h3>
-        <p>Имя: {name}</p>
-        <p>Фамилия: {surname}</p>
-        <p>Возраст: {age}</p>
+        <p>Имя: {formData.name}</p>
+        <p>Фамилия: {formData.surname}</p>
+        <p>Возраст: {formData.age}</p>
+        <p>Email: {formData.email}</p>
+        <p>Телефон: {formData.phone}</p>
       </div>
     </div>
   );
