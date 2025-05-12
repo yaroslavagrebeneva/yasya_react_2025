@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
 function App() {
+  const [checked, setChecked] = useState(false);
   const [message, setMessage] = useState('');
 
-  const handleMessageChange = (e) => {
-    setMessage(e.target.value);
+  const handleCheckboxChange = (e) => {
+    setChecked(e.target.checked);
+    setMessage(e.target.checked ? 'Чекбокс отмечен' : 'Чекбокс не отмечен');
   };
 
   return (
@@ -12,20 +14,18 @@ function App() {
       <form>
         <div>
           <label>
-            Сообщение:
-            <textarea
-              value={message}
-              onChange={handleMessageChange}
-              rows="4"
-              cols="50"
-              placeholder="Введите ваше сообщение..."
+            <input
+              type="checkbox"
+              checked={checked}
+              onChange={handleCheckboxChange}
             />
+            Отметьте меня
           </label>
         </div>
       </form>
 
       <div>
-        <h3>Введенное сообщение:</h3>
+        <h3>Статус чекбокса:</h3>
         <p>{message}</p>
       </div>
     </div>
