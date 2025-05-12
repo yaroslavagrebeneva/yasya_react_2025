@@ -1,30 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-function UserInfo({ name, age, city }) {
+function Button({ children, onClick }) {
   return (
-    <div>
-      <h3>Информация о пользователе:</h3>
-      <p>Имя: {name}</p>
-      <p>Возраст: {age}</p>
-      <p>Город: {city}</p>
-    </div>
+    <button onClick={onClick}>
+      {children}
+    </button>
   );
 }
 
 function App() {
-  const [userData, setUserData] = useState({
-    name: 'Иван',
-    age: 25,
-    city: 'Москва'
-  });
+  const handleClick = () => {
+    alert('Кнопка нажата!');
+  };
 
   return (
     <div>
-      <UserInfo 
-        name={userData.name}
-        age={userData.age}
-        city={userData.city}
-      />
+      <Button onClick={handleClick}>
+        Нажми меня
+      </Button>
     </div>
   );
 }
