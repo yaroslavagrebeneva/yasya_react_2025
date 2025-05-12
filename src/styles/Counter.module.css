@@ -1,0 +1,76 @@
+.counter {
+  padding: 20px;
+  border-radius: 8px;
+  background: #f5f5f5;
+}
+
+.button {
+  composes: beauty from "./App.module.css";
+  margin: 0 10px;
+}
+
+.input1 {
+  composes: beauty from "./App.module.css";
+  background: #39FF14;
+  color: #1a1a1a;
+}
+
+.input2 {
+  composes: beauty from "./App.module.css";
+  background: #B026FF;
+  color: #fff;
+}
+
+.input3 {
+  composes: beauty from "./App.module.css";
+  background: #FFF700;
+  color: #1a1a1a;
+}
+
+.centeredBox {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 1.5px 8px rgba(0,0,0,0.08);
+  border: none;
+  padding: 48px 48px 40px 48px;
+  margin: 0;
+  max-width: 420px;
+  text-align: center;
+}
+
+.title {
+  color: #22223b;
+  margin-bottom: 40px;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.input1, .input2, .input3 {
+  composes: beauty from "./App.module.css";
+  background: #fff;
+  color: #22223b;
+  border: none;
+  border-bottom: 2px solid #c9ada7;
+  border-radius: 0;
+  width: 100%;
+  margin: 18px 0;
+  font-size: 1.15rem;
+  font-family: 'Playfair Display', serif;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: none;
+}
+
+.input1:focus, .input2:focus, .input3:focus {
+  outline: none;
+  border-bottom: 2.5px solid #9a8c98;
+  box-shadow: 0 4px 16px 0 rgba(154,140,152,0.08);
+}
+
+.input1::placeholder, .input2::placeholder, .input3::placeholder {
+  color: #bcbcbc;
+  opacity: 1;
+  font-weight: 400;
+  font-family: 'Playfair Display', serif;
+} 
