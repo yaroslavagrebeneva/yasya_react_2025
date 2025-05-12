@@ -1,22 +1,47 @@
 import React from 'react';
 
-function List({ items }) {
+function UserCard({ user }) {
   return (
-    <ul>
-      {items.map((item, index) => (
-        <li key={index}>{item}</li>
-      ))}
-    </ul>
+    <div style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
+      <h3>{user.name}</h3>
+      <p>Возраст: {user.age}</p>
+      <p>Email: {user.email}</p>
+      <p>Город: {user.city}</p>
+    </div>
   );
 }
 
 function App() {
-  const items = ['Элемент 1', 'Элемент 2', 'Элемент 3', 'Элемент 4', 'Элемент 5'];
+  const users = [
+    {
+      id: 1,
+      name: 'Иван Иванов',
+      age: 25,
+      email: 'ivan@example.com',
+      city: 'Москва'
+    },
+    {
+      id: 2,
+      name: 'Петр Петров',
+      age: 30,
+      email: 'petr@example.com',
+      city: 'Санкт-Петербург'
+    },
+    {
+      id: 3,
+      name: 'Анна Сидорова',
+      age: 28,
+      email: 'anna@example.com',
+      city: 'Казань'
+    }
+  ];
 
   return (
     <div>
-      <h2>Список элементов:</h2>
-      <List items={items} />
+      <h2>Список пользователей:</h2>
+      {users.map(user => (
+        <UserCard key={user.id} user={user} />
+      ))}
     </div>
   );
 }
